@@ -23,7 +23,7 @@ CREATE PROCEDURE CancelAppointment(IN p_appointment_id INT)
 BEGIN
     IF EXISTS (SELECT 1 FROM Appointments 
                WHERE appointment_id = p_appointment_id 
-               AND status != 'Completed') THEN
+               AND status = 'Pending') THEN
         
         UPDATE Appointments
         SET status = 'Cancelled'
